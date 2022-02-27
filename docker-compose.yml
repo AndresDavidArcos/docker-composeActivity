@@ -1,0 +1,52 @@
+version: '3.9'
+
+services:
+  server:
+    build: .
+    ports:
+      - '5000:5000'
+    networks:
+      serveranddb:
+        aliases:
+          - server_host
+      serverandbash:
+        aliases:
+          - server_host
+    depends_on:
+      - db    
+    container_name: api    
+  db:
+    image: 'postgres'
+    environment:
+      POSTGRES_PASSWORD: 'kamarex2002'
+      POSTGRES_DB: 'attendancebd'
+    networks:
+      serveranddb:
+        aliases:
+          - db_host
+    volumes: 
+      - 'dbdata:/var/lib/postgresql/data'
+    container_name: basededatos
+  bash:
+    build: ./bash
+    stdin_open: true
+    tty: true    
+    networks: 
+      serverandbash:
+        aliases:
+          - bash_host 
+    container_name: bash          
+networks:
+  serveranddb:
+    name: network1
+    driver: bridge
+    ipam:
+      driver: default
+  serverandbash:
+    name: network2
+    driver: bridge
+    ipam:
+      driver: default
+volumes: 
+  dbdata:       
+  
