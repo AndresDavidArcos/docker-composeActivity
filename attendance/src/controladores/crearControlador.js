@@ -33,7 +33,6 @@ const confirmarAsistenciaEstudiante = async (req, res, next)=>{
 
 const confirmarAsistenciaProfesor = async (req, res, next)=>{
     try{
-        console.log("QUE MIERDA PASAAAAAA")
         const {sede_idsede, hora, dia, mes, anio, personal_idpersonal} = req.body;
         console.log("fock yu", sede_idsede, hora, dia, mes, anio, personal_idpersonal)
         
