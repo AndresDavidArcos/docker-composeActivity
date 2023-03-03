@@ -18,7 +18,7 @@ services:
   db:
     image: 'postgres'
     environment:
-      POSTGRES_PASSWORD: 'kamarex2002'
+      POSTGRES_PASSWORD: '12345'
       POSTGRES_DB: 'attendancebd'
     networks:
       serveranddb:
